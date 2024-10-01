@@ -66,6 +66,7 @@ export const Footer = () => {
 
       <div className="text-center mt-10 border-t border-red-700 pt-5">
         <p>Renban Transport. All rights reserved.</p>
+        <p>sKDNKANSKNDKAS</p>
       </div>
     </div>
   );
