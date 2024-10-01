@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
@@ -137,7 +137,9 @@ export const DriverRegistration = () => {
             setIsSubmitting(false);
         }
     };
-
+    useEffect(()=>{
+        window.scroll(0,0)
+      })
     return (
         <div className='flex justify-center items-center mt-4'>
             <div className="max-w-5xl md:max-w-5xl mx-auto p-4">

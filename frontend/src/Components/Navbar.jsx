@@ -22,7 +22,7 @@ export const Navbar = () => {
     { path: "/about", name: 'About' },
     { path: '/service', name: 'Service' },
     { path: '/contact', name: 'Contact' },
-    {name:<Registration />},
+    
 
 
   ];
@@ -93,7 +93,7 @@ export const Navbar = () => {
               </li>
             ))}
 
-
+<Registration />
           </ul>
         </div>
         <div className="md:hidden flex items-center mr-8">
@@ -127,7 +127,9 @@ export const Navbar = () => {
               </li>
 
             ))}
-
+            <div className=''> 
+<Registration />
+</div>
           </ul>
 
 

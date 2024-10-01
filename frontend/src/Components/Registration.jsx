@@ -70,7 +70,7 @@ const MobileLiClosed =()=>{
                 
                 `}>
             <div className={`text-red-700  ${isVisible ? 'animate' : ''}`}>Registration</div>
-            <div className={`ml-2 mr-3 transition-transform ${isOpen ? 'rotate-180' : ''}`}>
+            <div className={`ml-2 mr-4 transition-transform ${isOpen ? 'rotate-180' : ''}`}>
                     {isOpen ? <FaChevronUp /> : <FaChevronDown />}
                 </div>
         </div>

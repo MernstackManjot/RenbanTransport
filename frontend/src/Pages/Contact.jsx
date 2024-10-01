@@ -1,7 +1,7 @@
   import React, { useState, useEffect } from 'react';
+  import axios from 'axios';
 
   export const Contact = () => {
-// const Port = process.env.BASE_URL
     const [formData, setFormData] = useState({
       name: '',
       email: '',
@@ -10,49 +10,35 @@
     });
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [responseMessage, setResponseMessage] = useState('');
-
+  
     useEffect(() => {
       window.scrollTo(0, 0);
     }, []);
-
-    // Handler for form submission
+  
     const handleSubmit = async (event) => {
       event.preventDefault();
       setIsSubmitting(true);
-    
+  
       try {
-        const response = await fetch(import.meta.env.VITE_BASE_URL, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(formData),
+        const response = await axios.post(import.meta.env.VITE_API_URL, formData);
+        
+        setResponseMessage(response.data.message);
+        alert('Message sent successfully!');
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          message: '',
         });
-    
-        const result = await response.json();
-        if (response.ok) {
-          setResponseMessage(result.message);
-          alert('Message sent successfully!');
-          setFormData({
-            name: '',
-            email: '',
-            phone: '',
-            message: '',
-          });
-        } else {
-          setResponseMessage(result.error || 'Failed to send message');
-          alert(`Failed to send message: ${result.error || 'Unknown error'}`);
-        }
       } catch (error) {
-        setResponseMessage('An error occurred while sending the message.');
-        alert(`Error: ${error.message}`);
+        const errorMessage = error.response?.data?.error || 'Failed to send message';
+        setResponseMessage(errorMessage);
+        alert(`Failed to send message: ${errorMessage}`);
       } finally {
         setIsSubmitting(false);
       }
     };
-    
-
-    
+  
     const handleChange = (event) => {
       const { name, value } = event.target;
       setFormData((prevData) => ({
@@ -60,7 +46,6 @@
         [name]: value,
       }));
     };
-
    
 
     return (

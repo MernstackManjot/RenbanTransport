@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { HomeCard } from '../Components/HomeCard';
 
 export const HomePage = () => {
+    useEffect(()=>{
+        window.scroll(0,0)
+      })
     return (
         <>
             <div className="relative w-full overflow-hidden h-[150px] md:h-[300px] lg:h-[520px] sm:[300px] font-thin ">
